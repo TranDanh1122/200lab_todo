@@ -3,7 +3,7 @@ declare global {
         id: number,
         title: string,
         isDone: boolean,
-        status: "edit" | "show"
+        isEditing: boolean
     }
     interface TodoList {
         todos: Todo[]
