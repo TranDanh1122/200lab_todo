@@ -35,9 +35,12 @@ export default function TodoList(): React.JSX.Element {
         renderTodos(newTodos)
     }
     const handleAdd = () => {
-        const newTodos = [...todos]
-        newTodos.push({ id: newTodos[newTodos.length - 1].id + 1, title: "Làm gì viết vào đây", isDone: false, isEditing: false })
-        renderTodos(newTodos)
+        const input = prompt("Làm gì viết vào đây!")
+        if(input) {
+            const newTodos = [...todos]
+            newTodos.push({ id: newTodos[newTodos.length - 1].id + 1, title: input, isDone: false, isEditing: false })
+            renderTodos(newTodos)
+        }
     }
     return (
         <div className="flex flex-col flex-nowrap gap-4 w-[50%]">
