@@ -8,7 +8,7 @@ interface TodoItemProps {
     onDone: (itemId: number) => void,
 
 }
-const TodoItem: React.FC<TodoItemProps> = ({ item, swapShowNEdit, onSave, onDelete, onDone }): React.JSX.Element => {
+export default function TodoItem({ item, swapShowNEdit, onSave, onDelete, onDone }: TodoItemProps): React.JSX.Element {
     const [value, setValue] = React.useState(item.title)
     return (
         <div className="flex flex-nowrap items-center w-full justify-between">
@@ -48,4 +48,3 @@ const TodoItem: React.FC<TodoItemProps> = ({ item, swapShowNEdit, onSave, onDele
         </div >
     )
 }
-export default TodoItem

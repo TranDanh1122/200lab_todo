@@ -7,29 +7,29 @@ const initData: Todo[] = [
     { id: 4, title: "Todo 5", isDone: false, isEditing: false }
 
 ]
-const TodoList: React.FC = (): React.JSX.Element => {
-    const [todos, renderTodos] = React.useState(initData)
+export default function TodoList(): React.JSX.Element {
+    const [todos, renderTodos] = React.useState<Todo[]>(initData)
     const handleDelete = (itemId: number) => {
-        const newTodos = [...todos.filter(item => item.id != itemId)]
+        const newTodos = todos.filter(item => item.id != itemId)
         renderTodos(newTodos)
     }
     const swapShowNEdit = (itemId: number) => {
         const index = todos.findIndex(item => item.id == itemId)
-        if (index == -1) return false
+        if (index == -1) return
         const newTodos = [...todos]
         newTodos[index] = { ...newTodos[index], isEditing: !newTodos[index].isEditing }
         renderTodos(newTodos)
     }
     const handleSave = (itemId: number, value: string) => {
         const index = todos.findIndex(item => item.id == itemId)
-        if (index == -1) return false
+        if (index == -1) return
         const newTodos = [...todos]
         newTodos[index] = { ...newTodos[index], title: value, isEditing: !newTodos[index].isEditing }
         renderTodos(newTodos)
     }
     const handleDone = (itemId: number) => {
         const index = todos.findIndex(item => item.id == itemId)
-        if (index == -1) return false
+        if (index == -1) return
         const newTodos = [...todos]
         newTodos[index] = { ...newTodos[index], isDone: true }
         renderTodos(newTodos)
@@ -46,4 +46,3 @@ const TodoList: React.FC = (): React.JSX.Element => {
         </div>
     )
 }
-export default TodoList
